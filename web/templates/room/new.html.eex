@@ -3,4 +3,4 @@
 <%= render "form.html", changeset: @changeset,
                         action: room_path(@conn, :create) %>
 
-<%= link "Back", to: room_path(@conn, :index) %>
+<%= link "Wstecz", to: room_path(@conn, :index) %>

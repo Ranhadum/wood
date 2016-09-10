@@ -19,7 +19,7 @@ defmodule Wood.RoomController do
     case Repo.insert(changeset) do
       {:ok, _room} ->
         conn
-        |> put_flash(:info, "Room created successfully.")
+        |> put_flash(:info, "Pokój stworzony.")
         |> redirect(to: room_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -34,7 +34,7 @@ defmodule Wood.RoomController do
     room = Repo.get!(Room, id)
     Repo.delete!(room)
     conn
-      |> put_flash(:info, "Room deleted successfully.")
+      |> put_flash(:info, "Pokój usunięty.")
       |> redirect(to: room_path(conn, :index))
   end
 end
