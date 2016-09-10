@@ -9,7 +9,7 @@ defmodule Wood.RegistrationController do
     def create(conn, %{"user" => user_params}) do
       changeset = User.changeset(%User{}, user_params)
 
-      case Repo.insert(changeset) do
+      case Wood.Registration.create(changeset) do
         {:ok, _user} ->
           conn
           |> put_flash(:info, "Użytkownik stworzony.")
