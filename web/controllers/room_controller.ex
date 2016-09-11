@@ -3,6 +3,8 @@ defmodule Wood.RoomController do
   alias Wood.Repo
   alias Wood.Room
 
+  plug Wood.Plugs.Authenticate
+
   def index(conn, _params) do
     rooms = Repo.all(Room)
     render(conn, "index.html", %{rooms: rooms})
