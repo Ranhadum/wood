@@ -12,6 +12,7 @@ defmodule Wood.Plugs.Authenticate do
         conn
           |> put_flash(:error, "Musisz się zalogować by zobaczyć tę stronę.")
           |> redirect(to: session_path(conn, :new))
+          |> halt
       _ -> conn
     end
   end

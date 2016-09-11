@@ -9,5 +9,6 @@
       <% end %>
       </div>
     <input id="chat-input" class="form-control" placeholder="Message"/>
+    <%= link "wyjdź", to: room_path(@conn, :index)%>
   </div>
 </div>

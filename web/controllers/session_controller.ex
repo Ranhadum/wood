@@ -20,6 +20,6 @@ defmodule  Wood.SessionController do
       conn
       |> delete_session(:current_user)
       |> put_flash(:info, "Wylogowano")
-      |> redirect(to: "/rooms")
+      |> redirect(to: room_path(conn, :index))
   end
 end

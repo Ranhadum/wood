@@ -14,7 +14,7 @@ defmodule Wood.RegistrationController do
           conn
           |> put_session(:current_user, user.id)
           |> put_flash(:info, "Użytkownik stworzony.")
-          |> redirect(to: "/rooms")
+          |> redirect(to: room_path(conn, :index))
         {:error, changeset} ->
           render(conn, "new.html", changeset: changeset)
       end
