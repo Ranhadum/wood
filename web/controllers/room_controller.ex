@@ -2,11 +2,11 @@ defmodule Wood.RoomController do
   use Wood.Web, :controller
   alias Wood.Repo
   alias Wood.Room
-
+  import Wood.Session, only: [current_user: 1]
   plug Wood.Plugs.Authenticate
 
   def index(conn, _params) do
-    rooms = Repo.all(Room)
+    rooms = Repo.all(Room) |> Repo.preload(:user)
     render(conn, "index.html", %{rooms: rooms})
   end
 
@@ -24,6 +24,8 @@ defmodule Wood.RoomController do
   end
 
   def create(conn, %{"room" => room_params}) do
+    room_params = Map.put(room_params, "user_id", current_user(conn).id)
+
     changeset = Room.changeset(%Room{}, room_params)
 
     case Repo.insert(changeset) do

@@ -6,6 +6,9 @@ defmodule Wood.User do
     field :crypted_password, :string
     field :password, :string, virtual: true
 
+    has_many :messages, Wood.Message
+    has_many :rooms, Wood.Room
+
     timestamps()
   end
 

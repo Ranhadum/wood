@@ -4,7 +4,10 @@ defmodule Wood.Room do
   schema "rooms" do
     field :name, :string
     has_many :messages, Wood.Message
-    timestamps()
+    belongs_to :user, Wood.User
+
+
+  timestamps()
   end
 
   @doc """
@@ -12,8 +15,8 @@ defmodule Wood.Room do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, [:name, :user_id])
+    |> validate_required([:name, :user_id])
     |> validate_length(:name, min: 4, max: 16)
   end
 end
