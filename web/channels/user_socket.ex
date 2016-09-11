@@ -2,7 +2,7 @@ defmodule Wood.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Wood.RoomChannel
+  channel "room:*", Wood.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

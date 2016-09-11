@@ -10,6 +10,11 @@ defmodule Wood.RoomController do
     render(conn, "index.html", %{rooms: rooms})
   end
 
+  def show(conn, %{"id" => id}) do
+    room = Repo.get!(Room, id)
+    render(conn, "show.html", %{room: room})
+  end
+
   def new(conn, _params) do
     changeset = Room.changeset(%Room{})
     render(conn, "new.html", %{changeset: changeset})
@@ -26,12 +31,7 @@ defmodule Wood.RoomController do
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
-  end
-
-  def show(conn, _params) do
-    render(conn, "show.html")
-  end
-
+end
   def delete(conn, %{"id" => id}) do
     room = Repo.get!(Room, id)
     Repo.delete!(room)
