@@ -1,9 +1,17 @@
 /* This file is for your main application css. */
+body{
+  background-color: #ADFF2F;
+  color: grey;
+}
+
+
 #chat-box {
   border: 1px solid #777;
   height: 400px;
   overflow: scroll;
   margin-bottom: 50px;
+  background-color: white;
+  color: black;
 }
 #room-id {
   display: none;

@@ -3,7 +3,7 @@ defmodule Wood.Room do
 
   schema "rooms" do
     field :name, :string
-
+    has_many :messages, Wood.Message
     timestamps()
   end
 
