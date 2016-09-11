@@ -26,7 +26,7 @@ defmodule Wood.Router do
     post "/registrations", RegistrationController, :create
     get "/login", SessionController, :new
     post "/login", SessionController, :create
-    delete "/login", SessionCOntroller, :delete
+    delete "/logout", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.

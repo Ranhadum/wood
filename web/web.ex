@@ -52,6 +52,7 @@ defmodule Wood.Web do
       import Wood.Router.Helpers
       import Wood.ErrorHelpers
       import Wood.Gettext
+      import Wood.Session
     end
   end
 

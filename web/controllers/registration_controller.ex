@@ -10,8 +10,9 @@ defmodule Wood.RegistrationController do
       changeset = User.changeset(%User{}, user_params)
 
       case Wood.Registration.create(changeset) do
-        {:ok, _user} ->
+        {:ok, user} ->
           conn
+          |> put_session(:current_user, user.id)
           |> put_flash(:info, "Użytkownik stworzony.")
           |> redirect(to: "/rooms")
         {:error, changeset} ->

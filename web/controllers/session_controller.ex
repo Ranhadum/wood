@@ -10,7 +10,16 @@ defmodule  Wood.SessionController do
         |> put_session(:current_user, user.id)
         |> put_flash(:info, "Zalogowano")
         |> redirect(to: "/rooms")
-      :error ->
-    end
+      false ->
+        conn
+        |> put_flash(:info, "Błędne dane")
+        |> render("new.html")
+      end
+  end
+  def delete(conn,_params) do
+      conn
+      |> delete_session(:current_user)
+      |> put_flash(:info, "Wylogowano")
+      |> redirect(to: "/rooms")
   end
 end
